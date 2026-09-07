@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Tab Dock",
+  "version": "1.0.0",
+  "description": "Slim icon dock for open tabs — hover for details, pin app order, icon or panel layout, left or right.",
+  "permissions": ["tabs", "storage"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Toggle Tab Dock",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "exclude_matches": ["*://chrome.google.com/webstore/*"],
+      "js": ["lib/apps.js", "lib/groupTabs.js", "content/dock.js"],
+      "css": ["content/dock.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
