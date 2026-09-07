@@ -12,8 +12,11 @@ let state = {
     pushContent: true,
     showEmptyPinned: true,
     dockMode: "icon",
+    windowScope: "current",
   },
   activeTabId: null,
+  requestWindowId: null,
+  windowScope: "current",
 };
 
 let rootEl = null;
@@ -718,7 +721,13 @@ function renderSettings() {
       </div>
     </div>
     <div class="td-setting-row">
-      <span>Push page content</span>
+      <span>Window scope</span>
+      <div class="td-seg" data-setting="windowScope">
+        <button class="${s.windowScope === "current" ? "td-on" : ""}" data-value="current">This window</button>
+        <button class="${s.windowScope === "all" ? "td-on" : ""}" data-value="all">All windows</button>
+      </div>
+    </div>
+    <div class="td-setting-row">
       <button class="td-switch ${s.pushContent ? "td-on" : ""}" data-setting="pushContent" aria-label="Push page content"></button>
     </div>
     <div class="td-setting-row">
